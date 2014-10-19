@@ -1,15 +1,23 @@
 doctype html
-- var srj = strigoi.doc.site.modules['strigoi-reveal-js']
+- var srj = strigoi.mod['strigoi-reveal-js']
+- var o = srj.opts
+- var rd = o.revealDir
 html(lang='en')
   head
     meta(charset='utf-8')
-    if srj.opts.title
-      title= srj.opts.title
+    if o.title
+      title= o.title
     meta(name='apple-mobile-web-app-capable', content='yes')
     meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    if o.cssTheme
+      link(rel='stylesheet', href=rd + '/reveal.css')
+      link(rel='stylesheet', href=rd + '/theme.css')
   body
     .reveal
       .slides
         block slides
-  script(src=srj.opts.revealJsPath)
+  script(src=rd + '/reveal.js')
+  if o.revealInit
+    script.
+      Reveal.initialize(!{JSON.stringify(o.revealInit)});
