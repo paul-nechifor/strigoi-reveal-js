@@ -1,4 +1,4 @@
-class Reveal
+module.exports = new class Reveal
   constructor: ->
     @name = 'strigoi-reveal-js'
 
@@ -31,5 +31,3 @@ class Reveal
       @opts.revealInit = @site.merge defaultInit, @opts.revealInit
 
     cb()
-
-module.exports = new Reveal
